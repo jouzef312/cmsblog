@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\back;
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
@@ -11,7 +9,6 @@ use App\Post;
 use App\User;
 use App\Categors;
 use App\Tag;
-
 class postController extends Controller
 {
     /**
@@ -29,7 +26,6 @@ $tag = Tag::All();
         
           return view('back.post.index',compact('post'),compact('categors'),compact('tag'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +38,6 @@ $tag = Tag::All();
         $categor = Categors::All();
           return view('back.post.create',compact('categor'),compact('tag'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -58,11 +53,7 @@ $tag = Tag::All();
             ]);
   $path = Storage::disk('images')->put('', $request->file('file'));
     // Save thumb
-
-
     $img = InterventionImage::make($request->file('file'))->widen(100);
-
-
     Storage::disk('thumbs')->put($path, $img->encode());
         $post = new Post();
         $post->title = $request->title;
@@ -71,14 +62,10 @@ $tag = Tag::All();
         $post->file = $path;
         
         $post->save();
-
 $post->tags()->sync($request->tag, false);
-
-
         
       return redirect('post');
     }
-
     /**
      * Display the specified resource.
      *
@@ -89,7 +76,6 @@ $post->tags()->sync($request->tag, false);
     {
      //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -104,7 +90,6 @@ $post->tags()->sync($request->tag, false);
             $categor = Categors::All();
           return view('back.post.edit'  ,compact('postedit','categor','tags'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -130,15 +115,11 @@ $post->tags()->sync($request->tag, false);
         $post->body = $request->body;
        $post->categors_id = $request->categors;
         $post->save();
-
 $post->tags()->sync($request->tag);
             
        
-
-
         return redirect('post');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -148,7 +129,6 @@ $post->tags()->sync($request->tag);
     public function destroy($id)
     {
         //
-
          $item = post::find($id);
         
 $item->tags()->detach();
@@ -158,7 +138,5 @@ $item->tags()->detach();
  
     $item->delete();
     return redirect('post');
-
-
     }
 }

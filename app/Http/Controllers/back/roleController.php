@@ -4,9 +4,9 @@ namespace App\Http\Controllers\back;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
-
-class adminController extends Controller
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+class roleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,10 @@ class adminController extends Controller
      */
     public function index()
     {
-         $user = User::All();
-          return view('back.admin.index',compact('user'));
+        //
+         $roles = Role::All();
+          $permissions = Permission::All();
+        return view('back.role.index',compact('roles','permissions'));
     }
 
     /**
@@ -26,9 +28,9 @@ class adminController extends Controller
      */
     public function create()
     {
-       
-
-      return view('back.admin.create');
+        //
+        $permission = Permission::All();
+             return view('back.role.create',compact('permission'));
     }
 
     /**
@@ -39,19 +41,21 @@ class adminController extends Controller
      */
     public function store(Request $request)
     {
-        //
-          $this->validate($request,[
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6'],
-        ]);
+    
+     $this->validate($request,[
+            'name'=>'required',
+          
+            
+            ]);
+     $role = new Role();
+     $role->name = $request->name;
+     $role->save();
+     $role->givePermissionTo($request->permission);
+      $roles = Role::All();
+        return view('back.role.index',compact('roles'));
 
-         $user = new User();
-         $user->name = $request->name;
-         $user->email = $request->email;
-         $user->password = Hash::make($request->password); 
-         $user->save();
-         return redirect('/admin');
+
+
     }
 
     /**
@@ -62,7 +66,11 @@ class adminController extends Controller
      */
     public function show($id)
     {
-        
+        //
+
+    
+
+
     }
 
     /**
@@ -74,6 +82,10 @@ class adminController extends Controller
     public function edit($id)
     {
         //
+
+        $permissions = Permission::All();
+        $role = Role::findById($id);
+        return view('back.role.edit'  ,compact('role','permissions'));
     }
 
     /**
@@ -86,6 +98,17 @@ class adminController extends Controller
     public function update(Request $request, $id)
     {
         //
+             $this->validate($request,[
+            'name'=>'required',
+            'permission'=>'required'
+            
+            ]);
+     $role = Role::findById($id);
+     $role->name = $request->name;
+     $role->save();
+     $role->givePermissionTo($request->permission);
+      $roles = Role::All();
+        return view('back.role.index',compact('roles'));
     }
 
     /**

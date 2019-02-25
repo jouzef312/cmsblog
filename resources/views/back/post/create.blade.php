@@ -1,7 +1,7 @@
 @extends('back.admin.admin')
  
 @section('contenu')
-                  
+@role('creater')                  
 <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">creat post</h3>
@@ -80,4 +80,6 @@
               </div>
 
             </form>
+
+    @endrole        
 @endsection

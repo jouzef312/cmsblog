@@ -285,7 +285,7 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-      
+   @can('editerarticle')
 <li class="treeview">
           <a href="{{ route('admin.index') }}">
             <i class="fa fa-laptop"></i>
@@ -300,7 +300,7 @@ desired effect
            
           </ul>
         </li>
-
+@endcan
 
         <li class="treeview">
           <a href="{{ route('post.index') }}">
@@ -318,7 +318,37 @@ desired effect
           </ul>
         </li>
 
+  <li class="treeview">
+          <a href="{{ route('permission.index') }}">
+            <i class="fa fa-laptop"></i>
+            <span>permissions</span>
+            <span class="pull-right-container">
+                             <i class="fa fa-angle-left pull-right"></i>
 
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('permission.index') }}"><i class="fa fa-circle-o"></i> Liste permissions</a></li>
+         
+           
+          </ul>
+        </li>
+
+  <li class="treeview">
+          <a href="{{ route('role.index') }}">
+            <i class="fa fa-laptop"></i>
+            <span>Role</span>
+            <span class="pull-right-container">
+                             <i class="fa fa-angle-left pull-right"></i>
+
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('role.index') }}"><i class="fa fa-circle-o"></i> Liste role</a></li>
+         
+           
+          </ul>
+        </li>
 
         <li class="treeview">
           <a href="{{ route('categors.index') }}">

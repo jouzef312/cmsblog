@@ -4,9 +4,8 @@ namespace App\Http\Controllers\back;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 
-class adminController extends Controller
+class perController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,9 @@ class adminController extends Controller
      */
     public function index()
     {
-         $user = User::All();
-          return view('back.admin.index',compact('user'));
+        //
+          $permission = Permission::All();
+        return view('back.permission.index',compact('permissions')
     }
 
     /**
@@ -26,9 +26,7 @@ class adminController extends Controller
      */
     public function create()
     {
-       
-
-      return view('back.admin.create');
+        //
     }
 
     /**
@@ -40,18 +38,6 @@ class adminController extends Controller
     public function store(Request $request)
     {
         //
-          $this->validate($request,[
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6'],
-        ]);
-
-         $user = new User();
-         $user->name = $request->name;
-         $user->email = $request->email;
-         $user->password = Hash::make($request->password); 
-         $user->save();
-         return redirect('/admin');
     }
 
     /**
@@ -62,7 +48,7 @@ class adminController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**

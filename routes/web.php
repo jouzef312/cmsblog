@@ -25,6 +25,9 @@ Route::resource('/post','back\postController');
 Route::resource('/categors','back\CategorsController');
 Route::resource('/tag','back\TagController');
 
+Route::resource('/permission','back\permissionController');
+Route::resource('/role','back\roleController');
+
 
 Route::resource('/article','front\articleController');
 

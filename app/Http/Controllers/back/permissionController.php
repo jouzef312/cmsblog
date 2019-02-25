@@ -4,9 +4,10 @@ namespace App\Http\Controllers\back;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
-class adminController extends Controller
+class permissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,10 @@ class adminController extends Controller
      */
     public function index()
     {
-         $user = User::All();
-          return view('back.admin.index',compact('user'));
+        //
+        $permissions = Permission::All();
+        return view('back.permission.index',compact('permissions'));
+
     }
 
     /**
@@ -26,9 +29,8 @@ class adminController extends Controller
      */
     public function create()
     {
-       
-
-      return view('back.admin.create');
+        //
+        return view('back.permission.create');
     }
 
     /**
@@ -41,17 +43,15 @@ class adminController extends Controller
     {
         //
           $this->validate($request,[
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6'],
-        ]);
+            'name'=>'required'
+            
+            ]);
+$permission = new Permission();
+$permission->name = $request->name;
+$permission->save();
+$permissions = Permission::All();
+        return view('back.permission.index',compact('permissions'));
 
-         $user = new User();
-         $user->name = $request->name;
-         $user->email = $request->email;
-         $user->password = Hash::make($request->password); 
-         $user->save();
-         return redirect('/admin');
     }
 
     /**
@@ -62,7 +62,7 @@ class adminController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -74,6 +74,8 @@ class adminController extends Controller
     public function edit($id)
     {
         //
+ $permission = Permission::findById($id);
+        return view('back.permission.edit'  ,compact('permission'));
     }
 
     /**
@@ -85,7 +87,18 @@ class adminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request,[
+            'name'=>'required'
+            
+            ]);
+$permission = Permission::findById($id);
+$permission->name = $request->name;
+$permission->save();
+$permissions = Permission::All();
+        return view('back.permission.index',compact('permissions'));
+
+
+
     }
 
     /**
@@ -97,5 +110,12 @@ class adminController extends Controller
     public function destroy($id)
     {
         //
+
+        $permission = Permission::findById($id);
+        $permission->delete();
+        $permissions = Permission::All();
+        return view('back.permission.index',compact('permissions'));
+
+
     }
 }
