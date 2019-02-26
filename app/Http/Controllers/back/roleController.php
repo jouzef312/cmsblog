@@ -106,7 +106,7 @@ class roleController extends Controller
      $role = Role::findById($id);
      $role->name = $request->name;
      $role->save();
-     $role->givePermissionTo($request->permission);
+     $role->syncPermissions($request->permission);
       $roles = Role::All();
         return view('back.role.index',compact('roles'));
     }
@@ -119,6 +119,13 @@ class roleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::findById($id);
+     $role->delete();
+    // $role->getAllpermissions()->delete();
+
+      $roles = Role::All();
+          $permissions = Permission::All();
+        return view('back.role.index',compact('roles','permissions'));
+
     }
 }
