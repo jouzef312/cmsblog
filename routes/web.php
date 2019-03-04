@@ -24,6 +24,13 @@ Route::resource('/admin','back\adminController');
 Route::resource('/post','back\postController');
 Route::resource('/categors','back\CategorsController');
 Route::resource('/tag','back\TagController');
+Route::resource('/articles','back\articleController');
+
+Route::resource('/tuto','back\tutoController');
+Route::post('/{id}/commenter','back\tutoController@addcommenter')->name('commenter');
+Route::post('/{id}/commenterpost','back\postController@addcommenter')->name('commenterpost');
+
+
 
 Route::resource('/permission','back\permissionController');
 Route::resource('/role','back\roleController');

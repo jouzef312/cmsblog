@@ -39,7 +39,52 @@
 						<p class="lead">{{ $poste->body  }}</p> 
 
 					
+<br><br>
+					
+						<div>
+							<h1 class="page-title">Commenter  </h1>	
+
+							 <form action="{{ route('commenterpost',$poste->id) }}" class="form-horizontal" method="POST">
+                    {{ csrf_field() }}
+                 
+
+            <!-- /.box-header -->
+            <!-- form start -->
+            
+              <div class="box-body">
+                  <div class="form-group">
+
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="commenter" id="commenter"  placeholder="new commenter" >
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="box-footer">
+              
+                <button type="submit" class="btn btn-info pull-right">commente</button>
+              </div>
+
+            </form>
+						</div>
+
+							<div class="entry-meta" >
+														<h1 class="page-title">Commenter  </h1>	
+
+							<div> {{   $poste->comments()->count() }}  commentere</div>
 						
+@foreach ($poste->comments()->latest()->get(); as $commenter)
+                 
+                  
+               				<h5>{{$commenter->commenter}} </h5>
+               					<p>{{$commenter->created_at}} </p><br>
+
+
+               			@endforeach	
+
+
+						</div>
+
 
 
 					
@@ -47,7 +92,10 @@
 
 		  			  <!-- end author-profile -->						
 
-					</div> <!-- end entry-primary -->		  			   
+					</div> <!-- end entry-primary -->		
+
+
+
 
 	  			   
 

@@ -9,6 +9,7 @@ use App\Post;
 use App\User;
 use App\Categors;
 use App\Tag;
+use App\Comment;
 class postController extends Controller
 {
     /**
@@ -74,8 +75,41 @@ $post->tags()->sync($request->tag, false);
      */
     public function show($id)
     {
-     //
+      $post = Post::find($id);
+        return view('back.post.show',compact('post'));
     }
+
+
+  public function addcommenter(Request $request, $id)
+    {
+        //
+        
+ $this->validate($request,[
+            'commenter'=>'required',
+            
+            ]);
+$commenter = new Comment();
+
+$commenter->commenter = $request->commenter;
+
+$post = Post::find($id);
+$post->comments()->save($commenter);
+
+
+
+$commenter->save();
+return back();
+
+
+
+
+
+
+       
+
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *

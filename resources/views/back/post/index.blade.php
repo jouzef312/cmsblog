@@ -25,7 +25,7 @@
  >
 
                   </td>
-                  <td>{{ $posts->title  }}</td>
+                  <td><a href="{{ route('post.show',$posts->id) }}">{{ $posts->title  }}</a></td>
              
                   <td><span >{{ $posts->body }}</span></td>
 

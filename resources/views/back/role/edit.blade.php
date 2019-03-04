@@ -3,7 +3,7 @@
 @section('contenu')
 <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Edit catégorie</h3>
+              <h3 class="box-title">Edit Role</h3>
             </div>
              <form action="{{ Route('role.update',$role->id) }}" class="form-horizontal" method="POST">
                     {{ csrf_field() }}

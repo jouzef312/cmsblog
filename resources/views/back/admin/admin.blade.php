@@ -318,6 +318,24 @@ desired effect
           </ul>
         </li>
 
+<li class="treeview">
+          <a href="{{ route('tuto.index') }}">
+            <i class="fa fa-laptop"></i>
+            <span>Tuto</span>
+            <span class="pull-right-container">
+                             <i class="fa fa-angle-left pull-right"></i>
+
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('tuto.index') }}"><i class="fa fa-circle-o"></i> Liste Tuto</a></li>
+            <li><a href="{{ route('tuto.create') }}"><i class="fa fa-circle-o"></i> Create Tuto</a></li>
+           
+          </ul>
+        </li>
+
+
+
   <li class="treeview">
           <a href="{{ route('permission.index') }}">
             <i class="fa fa-laptop"></i>

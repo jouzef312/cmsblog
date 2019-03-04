@@ -4,7 +4,7 @@
                   
 <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">creat catégorie</h3>
+              <h3 class="box-title">create Permission</h3>
             </div>
  <form action="{{ url('permission') }}" enctype="multipart/form-data" class="form-horizontal" method="POST">
   {{ csrf_field() }}
