@@ -17,4 +17,11 @@ class Tuto extends Model
         //
         return $this->morphMany('App\Comment', 'commenttable');
     }
+    
+
+     public function tags()
+    {
+        //
+        return $this->morphToMany('App\Tag','tagtable');
+    }
 }

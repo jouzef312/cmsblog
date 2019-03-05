@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tuto;
 use App\Comment;
+use App\Tag;
 class tutoController extends Controller
 {
     /**
@@ -27,7 +28,8 @@ class tutoController extends Controller
     public function create()
     {
         //
-          return view('back.tuto.create');
+         $tag = Tag::All();
+          return view('back.tuto.create',compact('tag'));
     }
 
     /**
@@ -46,6 +48,7 @@ class tutoController extends Controller
           $tuto->title = $request->title;
         $tuto->body = $request->body;
         $tuto->save();
+        $tuto->tags()->sync($request->tag, false);
         $tutos = Tuto::All();
          return view('back.tuto.index',compact('tutos'));
 
@@ -72,9 +75,9 @@ class tutoController extends Controller
     public function edit($id)
     {
         //
-
+$tag = Tag::All();
         $tuto = Tuto::find($id);
-        return view('back.tuto.edit',compact('tuto'));
+        return view('back.tuto.edit',compact('tuto','tag'));
 
     }
 
@@ -127,6 +130,7 @@ return back();
           $tuto->title = $request->title;
         $tuto->body = $request->body;
         $tuto->save();
+        $tuto->tags()->sync($request->tag);
         $tutos = Tuto::All();
          return view('back.tuto.index',compact('tutos'));
 }
@@ -142,6 +146,7 @@ return back();
 
          $tuto = Tuto::find($id);
          $tuto->delete();
+         $tuto->tags()->detach();
          $tutos = Tuto::All();
          return view('back.tuto.index',compact('tutos'));
 

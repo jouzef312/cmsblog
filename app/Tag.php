@@ -16,7 +16,14 @@ class Tag extends Model
       public function posts()
     {
         //
-        return $this->belongsToMany('App\Post');
-    }  
+ return $this->morphedByMany('App\Post','tagtable');    
+}  
+
+
+  public function tutos()
+    {
+        //
+ return $this->morphedByMany('App\Tuto','tagtable');    
+}  
 
 }

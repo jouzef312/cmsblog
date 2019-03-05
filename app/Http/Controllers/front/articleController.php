@@ -80,6 +80,7 @@ $categorss = Categors::find($id);
 $categors = Categors::All();
  $tags = Tag::All();
 $tagfind = Tag::find($id);
+
    
           return view('frant.showtag',compact('tagfind','tags','categors'));
     }

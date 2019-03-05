@@ -52,17 +52,17 @@
             <!-- form start -->
             
               <div class="box-body">
-                  <div class="form-group">
+                  <div class="group-controle">
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="commenter" id="commenter"  placeholder="new commenter" >
+                    <input type="text" class="form-control" style = " width: -webkit-fill-available; " name="commenter" id="commenter"  placeholder="new commenter" >
                    
                   </div>
                 </div>
               </div>
               <div class="box-footer">
               
-                <button type="submit" class="btn btn-info pull-right">commente</button>
+                <button type="submit" class="btn btn-info pull-right">commente</button><br> <br>
               </div>
 
             </form>

@@ -47,6 +47,7 @@ class TagController extends Controller
         $tag = new Tag();
         $tag->title = $request->name;
         $tag->save();
+        
          return redirect('admin/tag');
     }
 

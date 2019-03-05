@@ -31,7 +31,30 @@
                   </div>
                 </div>
 
-              
+              <div class="form-group">
+                  <div class="col-sm-2">
+                  <label class="control-label">Select Tag</label>
+                 <select  class="form-control"  id="tag[]" name="tag[]"  multiple="multiple"  data-actions-box="true" > 
+                 
+                     @foreach ($tag as $tags)
+                  
+
+
+                   <option value="{{ $tags->id }}">  {{ $tags->title }}</option>
+                
+                 
+
+
+
+
+          
+                   
+
+                    @endforeach
+                  </select>
+                </div>
+                </div>
+               
            
 
 

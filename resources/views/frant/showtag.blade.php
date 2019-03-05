@@ -35,11 +35,11 @@
 
          	
 
-         	<article class="format-standard ">
+         	<article class="format-standard " style="    width: 300px;">
 
                <div class="entry-thumb">
                   <a href="{{ route('article.show',$posts->id) }}" class="thumb-link">
-	                  <img src="{{ url('images/' . $posts->file) }}" alt="building">             
+	                  <img src="{{ url('images/' . $posts->file) }}" style="    width: 300px;     height: 300px;" alt="building">             
                   </a>
                </div>
 
@@ -64,8 +64,42 @@
 
         		</article> <!-- end article -->
 
+      <br>      
+ @endforeach
+<br> <br>
+@foreach ($tagfind->tutos()->get() as $tuto)
+
+            
+
+            <article class="format-standard "  style="    width: 300px;     height: 300px;">
+
+             
+               <div class="entry-text">
+                  <div class="entry-header">
+
+                     <div class="entry-meta">
+                        <span class="cat-links">
+                           @foreach ($tuto->tags()->get() as $tagtuto)
+                 
+                  
+                           <a href="#">{{$tagtuto->title}} </a> 
+                        @endforeach                         
+                        </span>        
+                     </div>
+
+                     <h1 class="entry-title"><a href="{{  route('article.show',$posts->id) }}">{{ $tuto->title  }}</a></h1>
+                     
+                  </div>
+                  
+               </div>
+
+            </article> <!-- end article -->
+
            
  @endforeach
+
+
+
 
         		 <!-- end article -->
 
