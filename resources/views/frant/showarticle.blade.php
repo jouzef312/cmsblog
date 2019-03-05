@@ -10,10 +10,10 @@
 
    	 <section id="bricks">
 
-   	<div class="row masonry">
+   	<div class="row card text-white bg-dark" style="    text-align: -webkit-center;">
 
    		<!-- brick-wrapper -->
-         <div class="bricks-wrapper">
+         <div class="bricks-wrapper" >
 
          	<div class="grid-sizer"></div>
 
@@ -35,7 +35,7 @@
 
          	
 
-         	<article class="format-standard " style="    width: 300px;     ">
+         	<article class="brick entry format-standard animate-this animated fadeInUp " style="    width: 300px;     ">
 
                <div class="entry-thumb">
                   <a href="{{ route('article.show',$posts->id) }}" class="thumb-link">

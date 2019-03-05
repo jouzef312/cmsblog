@@ -6,8 +6,8 @@
         
 
  <section id="content-wrap" class="blog-single">
-   	<div class="row">
-   		<div class="col-twelve">
+   	<div ">
+   		<div class=" " style="    text-align: -webkit-center;">
 
    		
 
@@ -42,7 +42,7 @@
 <br><br>
 					
 						<div>
-							<h1 class="page-title">Commenter  </h1>	
+							<h1 class="page-title"  style="    text-align: -webkit-auto;">Commenter  </h1>	
 
 							 <form action="{{ route('commenterpost',$poste->id) }}" class="form-horizontal" method="POST">
                     {{ csrf_field() }}
@@ -69,15 +69,15 @@
 						</div>
 
 							<div class="entry-meta" >
-														<h1 class="page-title">Commenter  </h1>	
+														<h1 style="    text-align: -webkit-auto;"  class="page-title">Commenter  </h1>	
 
-							<div> {{   $poste->comments()->count() }}  commentere</div>
+							<div  style="    text-align: -webkit-auto;"> {{   $poste->comments()->count() }}  commentere</div>
 						
 @foreach ($poste->comments()->latest()->get(); as $commenter)
                  
                   
-               				<h5>{{$commenter->commenter}} </h5>
-               					<p>{{$commenter->created_at}} </p><br>
+               				<h5  style="    text-align: -webkit-auto;">{{$commenter->commenter}} </h5>
+               					<p  style="    text-align: -webkit-auto;">{{$commenter->created_at}} </p><br>
 
 
                			@endforeach	

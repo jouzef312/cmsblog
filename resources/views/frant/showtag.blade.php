@@ -9,8 +9,8 @@
 
 
    	 <section id="bricks">
-
-   	<div class="row masonry">
+<div style="text-align: -webkit-center;"><h1>Posts</h1></div>
+   	<div class="row " style="text-align: -webkit-center;">
 
    		<!-- brick-wrapper -->
          <div class="bricks-wrapper">
@@ -24,18 +24,17 @@
 
 
 
+<div class="row masonry">
 
 
 
 
-
-<h1>Posts</h1>
 
          	@foreach ($tagfind->posts()->get() as $posts)
 
          	
 
-         	<article class="format-standard " style="    width: 300px;">
+         	<article class="brick entry format-standard animate-this animated fadeInUp " style="    width: 300px;">
 
                <div class="entry-thumb">
                   <a href="{{ route('article.show',$posts->id) }}" class="thumb-link">
@@ -66,12 +65,41 @@
 
       <br>      
  @endforeach
-<br> <h1>Tuto</h1> <br>
+ </div>
+  </div> <!-- end brick-wrapper --> 
+
+      </div> <!-- end row -->
+
+   
+
+
+
+      
+   </section> <!-- end content -->
+<br> <br>
+    <section id="bricks">
+<div style="text-align: -webkit-center;"><h1>Tuto</h1></div>
+      <div class="row masonry">
+
+         <!-- brick-wrapper -->
+         <div class="bricks-wrapper">
+
+            <div class="grid-sizer"></div>
+
+
+
+
+
+
+
+
+<div class="row masonry">
+
 @foreach ($tagfind->tutos()->get() as $tuto)
    
             
 
-           <article class="format-standard " style="    width: 300px;">
+           <article class="brick entry format-standard animate-this animated fadeInUp" style="    width: 300px;">
 
                <div class="entry-thumb">
                   <a href="{{ route('articletuto',$tuto->id) }}" class="thumb-link">
