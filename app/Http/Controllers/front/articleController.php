@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Categors;
 use App\Tag;
+use App\Tuto;
 class articleController extends Controller
 {
     /**
@@ -19,9 +20,10 @@ class articleController extends Controller
         //
 
         $post = Post::All();
+        $tutos = Tuto::All();
      $categors = Categors::All();
      $tags = Tag::All();
-          return view('frant.index',compact('post','tags','categors'));
+          return view('frant.index',compact('post','tags','tutos','categors'));
     }
 
     /**
@@ -73,6 +75,16 @@ $categorss = Categors::find($id);
           return view('frant.showarticle',compact('categorss','tags','categors'));
     }
 
+ public function showtuto($id)
+    {
+        //
+ $categors = Categors::All();
+ $tuto = Tuto::find($id);
+     $categors = Categors::All();
+      $tags = Tag::All();
+   
+ return view('frant.showtuto',compact('tuto'),compact('tags','categors'));
+     }
 
  public function showtag($id)
     {

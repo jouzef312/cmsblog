@@ -4,6 +4,8 @@ namespace App\Http\Controllers\back;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image as InterventionImage;
 use App\Tuto;
 use App\Comment;
 use App\Tag;
@@ -44,9 +46,15 @@ class tutoController extends Controller
             'title'=>'required',
             'body' => 'required',
             ]);
+
+          $path = Storage::disk('images')->put('', $request->file('file'));
+    // Save thumb
+    $img = InterventionImage::make($request->file('file'))->widen(100);
+    Storage::disk('thumbs')->put($path, $img->encode());
          $tuto = new Tuto();
           $tuto->title = $request->title;
         $tuto->body = $request->body;
+        $tuto->file = $path;
         $tuto->save();
         $tuto->tags()->sync($request->tag, false);
         $tutos = Tuto::All();

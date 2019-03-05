@@ -20,14 +20,19 @@
                    
                   </div>
                 </div>
-
-
+   
                 <div class="form-group">
                   <label for="body" class="col-sm-2 control-label">body</label>
 
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="body" value="{{ old('body') }}" name="body" placeholder="body">
                   </div>
+                </div>
+  <div class="form-group">
+                   <label for="exampleInputFile" class="col-sm-2 control-label">File input</label>
+                    <input type="file" name="file" id="file">
+
+                 
                 </div>
 
                     <div class="form-group">

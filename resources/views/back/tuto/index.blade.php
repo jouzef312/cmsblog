@@ -8,21 +8,41 @@
               <table class="table table-bordered table-striped">
                 <tr>
                   <th style="width: 10px">ID</th>
-                 
+                 <th> image</th>
                   <th>title</th>
                   <th>body</th>
+                    <th>Tag </th>
                                <th> </th>
                 
                 </tr>
                    @foreach ($tutos as $tuto)
                 <tr>
                   <td>{{ $tuto->id }}</td>
+                  <td class="margin"> <img src="{{ url('thumbs/' . $tuto->file) }}"></td>
                 
                   <td><a href="{{ route('tuto.show',$tuto->id) }}">{{ $tuto->title  }}</a></td>
              
                   <td><span >{{ $tuto->body }}</span></td>
 
+<td>
+  
 
+  @foreach ($tuto->tags()->get() as $tagtuto)
+
+
+                     {{$tagtuto->title}} ,
+                    
+                 
+
+
+
+
+                  @endforeach
+
+
+
+
+</td>
 
 
                

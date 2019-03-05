@@ -30,6 +30,8 @@
                     <input type="text" class="form-control" id="body" value="{{ $tuto->body }}" name="body" placeholder="body">
                   </div>
                 </div>
+                
+
 
               <div class="form-group">
                   <div class="col-sm-2">

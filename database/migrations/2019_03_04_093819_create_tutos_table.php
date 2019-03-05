@@ -15,7 +15,7 @@ class CreateTutosTable extends Migration
     {
         Schema::create('tutos', function (Blueprint $table) {
             $table->increments('id');
-         
+          $table->string('file')->nullable();
              $table->string('title');
             $table->string('body');   
             $table->timestamps();

@@ -35,11 +35,11 @@
 
          	
 
-         	<article class="format-standard ">
+         	<article class="format-standard " style="    width: 300px;     ">
 
                <div class="entry-thumb">
                   <a href="{{ route('article.show',$posts->id) }}" class="thumb-link">
-	                  <img src="{{ url('images/' . $posts->file) }}" alt="building">             
+	                  <img src="{{ url('images/' . $posts->file) }}" style="    width: 300px;     height: 300px;" alt="building">             
                   </a>
                </div>
 
@@ -51,7 +51,7 @@
                				@foreach ($posts->tags()->get() as $tagpost)
                  
                   
-               				<a href="#">{{$tagpost->title}} </a> 
+               				<a href="{{ url('articletag/' .$tagpost->id) }}">{{$tagpost->title}} </a> 
                			@endforeach	              				
                			</span>			
                		</div>

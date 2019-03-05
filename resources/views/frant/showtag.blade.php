@@ -29,7 +29,7 @@
 
 
 
-
+<h1>Posts</h1>
 
          	@foreach ($tagfind->posts()->get() as $posts)
 
@@ -51,7 +51,7 @@
                				@foreach ($posts->tags()->get() as $tagpost)
                  
                   
-               				<a href="#">{{$tagpost->title}} </a> 
+               				<a href="{{ url('articletag/' .$tagpost->id) }}">{{$tagpost->title}} </a> 
                			@endforeach	              				
                			</span>			
                		</div>
@@ -66,14 +66,19 @@
 
       <br>      
  @endforeach
-<br> <br>
+<br> <h1>Tuto</h1> <br>
 @foreach ($tagfind->tutos()->get() as $tuto)
-
+   
             
 
-            <article class="format-standard "  style="    width: 300px;     height: 300px;">
+           <article class="format-standard " style="    width: 300px;">
 
-             
+               <div class="entry-thumb">
+                  <a href="{{ route('articletuto',$tuto->id) }}" class="thumb-link">
+                     <img src="{{ url('images/' . $tuto->file) }}" style="    width: 300px;     height: 300px;" alt="building">             
+                  </a>
+               </div>
+
                <div class="entry-text">
                   <div class="entry-header">
 
@@ -82,19 +87,19 @@
                            @foreach ($tuto->tags()->get() as $tagtuto)
                  
                   
-                           <a href="#">{{$tagtuto->title}} </a> 
+                           <a href="{{ url('articletag/' .$tagtuto->id) }}">{{$tagtuto->title}} </a> 
                         @endforeach                         
                         </span>        
                      </div>
 
-                     <h1 class="entry-title"><a href="{{  route('article.show',$posts->id) }}">{{ $tuto->title  }}</a></h1>
+                     <h1 class="entry-title"><a href="{{  route('articletuto',$tuto->id) }}">{{ $tuto->title  }}</a></h1>
                      
                   </div>
                   
                </div>
 
             </article> <!-- end article -->
-
+<br> 
            
  @endforeach
 

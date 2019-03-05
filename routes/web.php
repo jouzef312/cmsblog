@@ -42,7 +42,7 @@ Route::resource('/article','front\articleController');
 
 Route::get('/contact','front\contactController@create');
 Route::post('/contact','front\contactController@store');
-
+Route::get('/articletuto/{id}','front\articleController@showtuto')->name('articletuto');
 
 
 Route::get('/articlecategors/{id}','front\articleController@showarticle');
